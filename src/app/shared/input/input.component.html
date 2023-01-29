@@ -1,0 +1,29 @@
+<input [formControl]="control" [type]="type" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
+        duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400" [placeholder]="placeholder"
+    [mask]="format" />
+<ng-container *ngIf="control?.dirty">
+    <p *ngIf="control.errors?.['required']" class="text-red-400">
+        Field is required
+    </p>
+    <p *ngIf="control?.errors?.['minlength']" class="text-red-400">
+        It most be at least {{ control.errors?.['minlength']?.['requiredLength']}}
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.['email']">
+        You must enter a valid email
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.['max']">
+        You must be no more then 120 years old
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.['min']">
+        You must be at least 14 years old
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.['pattern']">
+        Password must be at list 8 characters long, have 1 uppercase and 1 number
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.['noMatch']">
+        Passwords do not match.
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.['emailTaken']">
+        Email taken. please try another email
+    </p>
+</ng-container>
