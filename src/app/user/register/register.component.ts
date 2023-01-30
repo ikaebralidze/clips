@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import IUser from 'src/app/models/user.model';
 import { RegisterValidators } from '../validators/register-validators';
@@ -11,28 +11,28 @@ import { EmailTaken } from '../validators/EmailTaken';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  name = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  name = new UntypedFormControl('', [Validators.required, Validators.minLength(3)]);
 
-  email = new FormControl(
+  email = new UntypedFormControl(
     '',
     [Validators.required, Validators.email],
     [this.emailTaken.validate]
   );
 
-  age = new FormControl(null, [
+  age = new UntypedFormControl(null, [
     Validators.required,
     Validators.min(14),
     Validators.max(120),
   ]);
 
-  password = new FormControl('', [
+  password = new UntypedFormControl('', [
     Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
   ]);
 
-  confirm_password = new FormControl('', [Validators.required]);
+  confirm_password = new UntypedFormControl('', [Validators.required]);
 
-  phoneNumber = new FormControl('', [
+  phoneNumber = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(9),
     Validators.maxLength(9),
@@ -43,7 +43,7 @@ export class RegisterComponent {
   alertColor = 'blue';
   inSubmission = false;
 
-  registerForm = new FormGroup(
+  registerForm = new UntypedFormGroup(
     {
       name: this.name,
       email: this.email,

@@ -4,7 +4,7 @@ import {
   AngularFireStorage,
   AngularFireUploadTask,
 } from '@angular/fire/compat/storage';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { switchMap, combineLatest, forkJoin } from 'rxjs';
 import { ClipService } from 'src/app/services/clip.service';
@@ -33,11 +33,11 @@ export class UpdateComponent implements OnDestroy {
   selectedScreenshot = '';
   screenshotTask?: AngularFireUploadTask;
 
-  title = new FormControl('', {
+  title = new UntypedFormControl('', {
     validators: [Validators.required, Validators.minLength(5)],
   });
 
-  uploadForm: any = new FormGroup({
+  uploadForm: any = new UntypedFormGroup({
     title: this.title,
   });
   constructor(
