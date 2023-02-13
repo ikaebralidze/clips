@@ -1,4 +1,3 @@
-import { IfStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -66,6 +65,7 @@ export class AuthService {
       displayName: userData.name,
     });
   }
+
   public async logout(event?: Event) {
     if (event) {
       event.preventDefault();

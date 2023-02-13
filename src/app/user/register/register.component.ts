@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, SkipSelf } from '@angular/core';
+import {
+  UntypedFormGroup,
+  UntypedFormControl,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import IUser from 'src/app/models/user.model';
 import { RegisterValidators } from '../validators/register-validators';
@@ -9,9 +13,13 @@ import { EmailTaken } from '../validators/EmailTaken';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {
-  name = new UntypedFormControl('', [Validators.required, Validators.minLength(3)]);
+  name = new UntypedFormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
 
   email = new UntypedFormControl(
     '',
