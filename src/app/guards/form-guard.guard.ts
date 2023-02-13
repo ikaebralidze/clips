@@ -6,13 +6,14 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UpdateComponent } from '../video/update/update.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FormGuardGuard implements CanDeactivate<unknown> {
+export class FormGuardGuard implements CanDeactivate<UpdateComponent> {
   canDeactivate(
-    component: unknown,
+    component: UpdateComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot
@@ -23,6 +24,13 @@ export class FormGuardGuard implements CanDeactivate<unknown> {
     | UrlTree {
     console.log('it was guards');
 
-    return true;
+    if (component.uploadForm.dirty) {
+      if (confirm('Video is not updated, are you sure you want to close it?')) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return !component.uploadForm.dirty;
   }
 }
