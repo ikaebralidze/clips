@@ -6,6 +6,7 @@ import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
 } from '@angular/fire/compat/auth-guard';
+import { FormGuardGuard } from '../guards/form-guard.guard';
 
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('home');
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       authGuardPipe: redirectUnauthorizedToHome,
     },
     canActivate: [AngularFireAuthGuard],
+    canDeactivate: [FormGuardGuard]
   },
   {
     path: 'manage-clips',
