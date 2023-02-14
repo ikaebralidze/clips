@@ -10,7 +10,8 @@ export class FfmpegService {
   private ffmpeg;
 
   constructor() {
-    this.ffmpeg = createFFmpeg({ log: true });
+    // console.log = function () {};
+    this.ffmpeg = createFFmpeg({ log: false });
   }
 
   async init() {

@@ -22,8 +22,6 @@ export class FormGuardGuard implements CanDeactivate<UpdateComponent> {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('it was guards');
-
     if (component.uploadForm.dirty) {
       if (confirm('Video is not updated, are you sure you want to close it?')) {
         return true;
