@@ -7,10 +7,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ClipService } from './services/clip.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, title: 'Clips' },
   {
     path: 'about',
     component: AboutComponent,
+    title: 'About',
   },
   {
     path: 'clip/:id',

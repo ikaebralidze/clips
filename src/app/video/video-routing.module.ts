@@ -12,28 +12,33 @@ const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('home');
 
 const routes: Routes = [
   {
-    path: 'manage',
-    component: ManageComponent,
+    path: '',
     data: {
       authOnly: true,
       authGuardPipe: redirectUnauthorizedToHome,
     },
     // check if user is authed to access this route
     canActivate: [AngularFireAuthGuard],
+    children: [
+      {
+        path: 'manage',
+        component: ManageComponent,
+
+        title: 'Manage',
+      },
+      {
+        path: 'upload',
+        component: UpdateComponent,
+        canDeactivate: [FormGuardGuard],
+        title: 'Update',
+      },
+    ],
   },
-  {
-    path: 'upload',
-    component: UpdateComponent,
-    data: {
-      authOnly: true,
-      authGuardPipe: redirectUnauthorizedToHome,
-    },
-    canActivate: [AngularFireAuthGuard],
-    canDeactivate: [FormGuardGuard],
-  },
+
   {
     path: 'manage-clips',
     redirectTo: 'manage',
+    title: 'Manage Clips',
   },
 ];
 
