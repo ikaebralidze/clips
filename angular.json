@@ -4,10 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "clips": {
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": { "geo-KA": "src/locale/messages.geo.xlf" }
-      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -21,7 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": ["geo-KA"],
             "outputPath": "dist/clips",
             "index": "src/index.html",
             "main": "src/main.ts",

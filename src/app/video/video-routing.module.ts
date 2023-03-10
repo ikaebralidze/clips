@@ -38,7 +38,6 @@ const routes: Routes = [
   {
     path: 'manage-clips',
     redirectTo: 'manage',
-    title: 'Manage Clips',
   },
 ];
 

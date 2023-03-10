@@ -34,7 +34,7 @@ describe('NavComponent', () => {
   });
 
   it('should logout', () => {
-    const element = fixture.debugElement.query(By.css('li:nth-child(1) a'));
+    const element = fixture.debugElement.query(By.css('ul:nth-child(2) li a'));
 
     expect(element).withContext('not loged in ').toBeTruthy();
 
